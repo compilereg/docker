@@ -1,0 +1,27 @@
+10-Create credential in Jenkins to connect to github (Jenkins)
+	1-Click manage jenkins
+	2-Manage credentials
+	3-Choose your scope
+	4-Choose Global
+	5-Add credentials
+	6-
+		Kind: usermame/password
+		Scope: Global
+		Username: 
+		Password:
+		Descreption
+	7-Press OK
+20-Create the Jenkins pipeline (jenkins)
+	10-New item
+	20-Enter your item name: WRite your pipeline name
+	30-Choose : Multibranch pipeline
+	40-Choose OK
+	50-Choose your display name
+	60-Write the description
+	70-In branch sources
+		10-In private repostory:You git url
+		20-Credentials : Choose the one created before in 10-1
+		30-Discover: Press Add, and choose Discover branches
+	80-Press Save
+		
+		
