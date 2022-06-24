@@ -1,0 +1,19 @@
+1-Robust Unit Testing of Pipeline Code with Spock
+	Video: https://www.youtube.com/watch?v=4PZ-UFBexIE
+	Slides: bit.ly/2QHzRW9
+	github: github.com/HomeAway/jenkins-spock
+
+2-Build a multibranch pipeline project
+https://www.jenkins.io/doc/tutorials/build-a-multibranch-pipeline-project/#setup-wizard
+
+3-Pipeline as a code
+https://www.jenkins.io/solutions/pipeline/
+
+4-Jenkins Tutorial For Beginners: Step by Step Guides : GAMED
+https://devopscube.com/jenkins-2-tutorials-getting-started-guide/
+
+5-Jenkins user handbook
+https://www.jenkins.io/user-handbook.pdf
+
+6-Integrate with gitlab
+https://docs.gitlab.com/ee/integration/jenkins.html
