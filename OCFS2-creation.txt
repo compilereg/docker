@@ -1,0 +1,42 @@
+1-On both nodes:
+	1-Install ocfs2-tools
+	$sudo apt-get install ocfs2-tools
+2-From only one node:
+	1-Create a partition, change sdb with your device
+	$sudo fdisk /dev/sdb
+3-From the rest of cluster nodes
+	1-probe the device
+	$sudo partprobe
+4-On all nodes: Replace ociocfs2 with your cluster name
+	1-Create the configuration file /etc/ocfs2/cluster.conf 
+		1-1: Add a cluster
+			$sudo o2cb add-cluster ociocfs2
+		1-2: Add each node in the cluster:
+			Hint: Replace initiator1 with your node1 name, and replace ip with its ip
+			Hint: Replace initiator2 with your node2 name, and replace ip with its ip
+			Hint: Node name must match the exact hostname for each node
+			$sudo o2cb add-node ociocfs2 initiator1 --ip 172.0.0.41
+			$sudo o2cb add-node ociocfs2 initiator2 --ip 172.0.0.42
+	2-If you have firewall, add port 7777/udp
+	3-Edit  /etc/default/o2cb
+		1-Change O2CB_ENABLED to be true
+		2-Change O2CB_BOOTCLUSTER to use your cluster name
+	4-Register the cluster
+		$o2cb register-cluster ociocfs2
+	5-Check the status, must be online
+		$o2cb  cluster-status
+5-On single node
+	1-Format the partition with OCFS2 
+		$sudo mkfs.ocfs2 -L "ocfs2" /dev/sdb1
+6-On all nodes:
+	1-Create mount point
+	$sudo mkdit /data
+	2-Mount the partition
+	$sudo mount -L 	ocfs2 /data
+---------------------------------------------------------
+URLS used:
+http://tech.gohcl.com/2013/05/Ubuntu-OCFS2-Cluster/
+https://blogs.oracle.com/cloud-infrastructure/a-simple-guide-to-oracle-cluster-file-system-ocfs2-using-iscsi-on-oracle-cloud-infrastructure
+http://manpages.ubuntu.com/manpages/bionic/man8/o2cb.8.html
+
+		
