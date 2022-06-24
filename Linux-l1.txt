@@ -1,0 +1,143 @@
+1-
+1-Access to linux:
+	Console: Physical access, and does not need any extra settings(Network)
+	Remote Access using SSH protocl TCP/22: Needs a working connection, and ssh client (putty)
+2-once logged in,
+	[root@template ~]#
+	root:Logged in User name
+	template:Host name
+	~: Home direcoty
+	#/$: Prompt (# root, $ non privilege user)
+3-Ready to interact with the linux using COMMANDS
+	OS: Kernel, File system, Shell.
+	COMMAND:
+		1-Command name: (Case senstive)
+		2-Options: how to specify how to do the command?.
+		3-Arguments : Apply the commands on ???
+	separator between them is space, tab. 
+	To start the execution, press enter.
+4-Linux is:
+	1-Case senstive
+	2-Every thing is a file
+	3-no extension in linux
+	. At the beginning of file name means that the file is hidden
+5-By default, the hard disk is divided into directories.
+6-Hard disk <= File system <= Inode.
+5-Shell: Accepts commands, interprets the command, and pass it to the kernel, waits for kernel repsonse, and writes back the answer on your terminal
+	1-Input	: Keyboard (Std/Input)
+	2-Output: Monitor (Std/Output)
+	There are tooo many shells in linux:
+	CLI Shell:
+		KSH: Korne shell
+		SH: Borne shell
+		BASH: Borne Again Shell (default)
+	GUI Shell:
+		GNome
+		KDE
+		Look-n-glass
+		LightGNome
+6-To logout press CTRL-D or exit 
+7-To change a password using command passwd:
+	1-Root launches passwd
+		passwd
+		or passwd <user>
+	2-Non-root launches passwd
+		passwd
+		current password
+		New password:
+		Confirm password:
+8-Execute multiple commands on the same line using ;
+9-Create an empty file using command touch
+	touch <file name1> <file name2> ....
+	touch creates a new file 0 bytes.
+		If the file not exists: Create empty file
+		If the file exists: Will not do anything just modify the last modification date.
+	touch newfile
+		Creates a file called newfile 0byte
+	touch new file
+		creates a 2 files (new, file)
+	What if needs a file name including space? add the file names in "" or '' or prefix space using \
+	touch 'new file'
+	touch "new file"
+	touch new\ file
+	Permissions:
+		touch a new file: Write permission on the parent directory
+		touch existing file: Write permission on the file it self
+9-How to read files needs a read permission:
+	1-cat: catinate : 
+		cat <file1> <file2> ...
+		reads the content of regular file, and prints it to the std/output
+		cat /etc/hosts
+		cat /etc/hosts /etc/resolv.conf
+		cat
+			Waitting for data from std/input, press CTRL-D <End of file>
+		DO NOT PRESS CTRL-Z
+		cat /etc/shadow
+	2-head
+		head <file name>
+		Reads and prints out to std/output the 1st 10 lines of file
+		head /etc/passwd
+		head -3 /etc/passwd
+		Reads and prints out to std/output the 1st 3 lines of file
+	3-tail
+		tail <file name>
+		Reads and prints out to std/output the last 10 lines of file
+		tail /etc/passwd
+		tail -3 /etc/passwd
+		Reads and prints out to std/output the last 3 lines of file
+	4-more needs more memory	
+		more <file name>
+		Reads and prints out to std/oupt full file page/page	
+			Enter to scroll down one line
+			space to scroll down one page
+			b to scroll up one page
+	5-less : faster
+		less <file name>
+		Reads and prints out to std/oupt full file page/page	
+			Enter to scroll down one line
+			space to scroll down one page
+			b to scroll up one page
+Auto competion
+	cat /etc/pas <tab> to auto complete a file name
+	6-History:
+		to display all comamnds
+		!Line number : to execute the command at line n
+--------------------------------------------------------------------------------------
+2-File system :
+	Linux file system is tree, has root called /
+	Absolute path: the path always start with /
+	Relative path: The path always does not start with /
+	/var/log/messages: absolute
+	log/messages: relative if you are in /var
+	..: parent
+	IF you are on bob, 
+		../alice/messages
+	1-pwd: Print Working Directory:Absolute
+	2-ls: List the directory contents; Read permission on directory
+		ls: List current directory
+		ls /etc/: List /etc directory content
+		ls -l: Read/and Execute permissions on directory
+		1st: col: 10 characters
+			1character: -(regular file), d(directory),l(link),c(Character device),b(Block device)
+			rwx: r: read, w:write, x: execute
+			---	: owner
+			---	: group
+			---	: other
+			Example:-r--r----- compiler compiler 			mydatafile
+			Any user tries to access mydatafile.
+			1-User is owner ? yes, 1st 3 characters
+			2-User member in group? yes, 2nd 3 characters.
+			3-Else, 3rd 3 characters.
+		3rd: col	: owner
+		4th: col	: group
+		Permissions can be set from root/or owner
+		ls -ld: Directory
+IS A BAD IDEA: rwxrwxrwx
+	3-mkdir: To create a directory needs a write permission
+		mkdir <path to directory>
+		mkdir newdir
+		mkdir olddir/newdir : create newdir under olddir, and olddir must exists
+		mkdir -p olddir/newdir: create newdir under olddir, and create olddir if not exist
+NOTE:
+	What is the onwer of the created file/directory ?. 
+	The user created the file/directory will be the owner.
