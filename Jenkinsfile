@@ -25,7 +25,7 @@ pipeline {
         steps{
 		      sh '''
                  echo "Deploying to main"
-                 /usr/bin/rsync -avu --delete --exclude Jenkinsfile  --exclude .git*  --exclude composer --exclude vendor $(pwd)/ /apps/aastwebsite/
+                 /usr/bin/rsync -avu --delete --exclude Jenkinsfile  --exclude .git*  --exclude composer --exclude vendor $(pwd)/ /apps/aast.edu/cms.aast.edu/
             '''
             }
        }
@@ -37,7 +37,7 @@ pipeline {
         steps{
 		      sh '''
                  echo "Deploying to testing"
-                  /usr/bin/rsync -avu --delete --exclude Jenkinsfile  --exclude .git* --exclude composer --exclude vendor $(pwd)/ /apps/aastwebsite/
+                  /usr/bin/rsync -avu --delete --exclude Jenkinsfile  --exclude .git* --exclude composer --exclude vendor $(pwd)/ /apps/aast.edu/cmstest.aast.edu/
             '''
             }
        }
