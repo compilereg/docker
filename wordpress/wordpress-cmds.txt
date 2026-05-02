@@ -1,0 +1,28 @@
+1-To pull MySQL
+	sudo docker pull MySQL
+
+2-To pull wordpress
+	sudo docker pull wordpress
+
+3-To create a MySQL container without persistent storage
+	sudo docker run -d --name mywordpressdb -e MYSQL_ROOT_PASSWORD=mypass -e MYSQL_DATABASE=wordpressdb -e MYSQL_USER=mydbadmin -e MYSQL_PASSWORD=mypassword  mysql
+
+4-To create a MySQL container with volume:
+	sudo docker volume create mydb
+	sudo docker run -d --name mywordpressdb -e MYSQL_ROOT_PASSWORD=mypassword -e MYSQL_DATABASE=wordpressdb -e MYSQL_USER=mydbadmin -e MYSQL_PASSWORD=mypassword -v mydb:/var/lib/mysql mysql
+
+5-To create a MySQL container with bind :
+	sudo mkdir /dbs
+	sudo docker run -d --name mywordpressdb -e MYSQL_ROOT_PASSWORD=mypassword -e MYSQL_DATABASE=wordpressdb -e MYSQL_USER=mydbadmin -e MYSQL_PASSWORD=mypassword -v /dbs:/var/lib/mysql mysql
+
+6-To grant privileges on created db
+	 sudo docker exec -it mywordpressdb mysql -u root -p -e "grant all privileges on wordpressdb.* to mydbadmin@'%';flush privileges"
+
+7-To create a wordpress container
+	sudo docker run -d -p 8080:80 --name mywordpressapp wordpress
+
+
+
+
+
+	
