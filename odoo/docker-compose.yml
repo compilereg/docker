@@ -18,5 +18,5 @@ Odoo:
   volumes:
     - odoo-data:/var/lib/odoo
 volumes:
-   Odoo-data: 
+   odoo-data: 
 
