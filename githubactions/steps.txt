@@ -1,0 +1,13 @@
+1-Create a repo
+2-Create your secrets, From inside your repo:
+	1-Settings, Secrets and variables, Actions
+	2-Actions secrets, New repository secret
+	3-Name: Create the secret name, MYHUB_USER
+	4-Secret: Create the secret value, ....
+3-Create your required actions, From your repo:
+	1-Actions
+	2-Search for the workflow called Docker image
+	3-Click configure
+	4-Change the run as in the text file in the repo
+	5-Press commit changes, and choose your commit message
+4-From actions, check for the Workflow, click on your workflow and check messages.
